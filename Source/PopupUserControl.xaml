@@ -1,0 +1,75 @@
+﻿
+    <!--<Summary> ///
+    /// Author : R. Arun Mutharasu ///
+    /// Created : 15-11-2019
+    /// YouTube Channel : C# Design Pro ///
+    /// </Summary>-->    
+    
+    <UserControl x:Class="PopupApp.PopupUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PopupApp"
+             mc:Ignorable="d" 
+             d:DesignHeight="200" d:DesignWidth="300">
+    
+    <Grid>
+        
+        <!--draw the popup user control-->
+        <Path x:Name="Container"
+              HorizontalAlignment="Center"
+              VerticalAlignment="Center"
+              Data="M0,0
+                    L10,-10 10,-27
+                    C10,-27 10,-32 18,-32
+              
+                    L198,-32
+                    C208,-31 208,-25 208,-15
+              
+                    L208,0 208,20
+                    C208,30 205,33 195,33
+              
+                    L20,33
+                    C15,33 10,33 10,25
+              
+                    L10,10
+                    z"            
+              Fill="#3A6180"
+              Height="65"
+              Width="195"
+              Stroke="#3A6180"
+              Stretch="Fill"
+              Margin="10">
+
+        </Path>
+        
+        <!--reusable text-->
+        <TextBlock x:Name="PopupText"
+                   FontSize="20"
+                   Panel.ZIndex="1"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center">            
+        </TextBlock>
+        
+    </Grid>
+    
+    <!--animate the user control-->
+    <UserControl.Style>
+        <Style>
+            <Style.Triggers>
+                <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetProperty="Opacity" Duration="00:00:02" From="0" To="1"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+                <Trigger Property="FrameworkElement.Visibility" Value="Collapsed">
+                    <Setter Property="FrameworkElement.Opacity" Value="0"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Style>
+    
+</UserControl>
